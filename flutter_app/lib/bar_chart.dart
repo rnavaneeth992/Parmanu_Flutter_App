@@ -14,45 +14,45 @@ class BarChart extends StatefulWidget {
 class _BarChartState extends State<BarChart> {
   List<BarChartModel> data=[
     BarChartModel(
-      year: "2014",
+      year: 2014,
       financial: 250,
-      color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+      color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2015",
+      year: 2015,
       financial: 300,
       color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2016",
+      year: 2016,
       financial: 100,
-      color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+      color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2017",
+      year: 2017,
       financial: 450,
       color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2018",
+      year: 2018,
       financial: 630,
-      color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+      color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2019",
+      year: 2019,
       financial: 950,
       color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     BarChartModel(
-      year: "2020",
+      year: 2020,
       financial: 400,
-      color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+      color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
   ];
   
   @override
   Widget build(BuildContext context) {
-    List<charts.Series<BarChartModel, String>> series = [
+    List<charts.Series<BarChartModel, num>> series = [
       charts.Series(
         id: "financial",
         data: data,
@@ -63,10 +63,13 @@ class _BarChartState extends State<BarChart> {
     ];
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-        child: charts.BarChart(
-          series,
-          animate: true,
-        ),
+        child: charts.LineChart(series,
+           domainAxis: const charts.NumericAxisSpec(
+                 tickProviderSpec:
+                 charts.BasicNumericTickProviderSpec(zeroBound: false),
+                 viewport: charts.NumericExtents(2014.0, 2020.0),
+           ),
+           animate: true),
     );
   }
 }
