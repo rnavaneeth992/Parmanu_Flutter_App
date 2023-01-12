@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/NavBar.dart';
+import 'package:flutter_app/bar_chart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,10 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('App'),
       ),
-      body: const Center(
-        
-      ),
-      
+      body:const BarChart(), 
     );
   }
 }
