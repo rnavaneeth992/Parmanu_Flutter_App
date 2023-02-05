@@ -29,6 +29,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 1;
+  static const List<Widget> _widgetOptions = <Widget>[
+    BarChart(),
+    Text(''),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +46,36 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(  
         crossAxisAlignment: CrossAxisAlignment.start,  
         children: <Widget>[ 
-          BarChart(),
+          Container(
+              padding: const EdgeInsets.all(15),
+              child: Table(
+                // border: TableBorder.all(width:1, color:Colors.black45), //table border
+                children: [
+                  TableRow(children: [
+                    TableCell(
+                      child: OutlinedButton(
+                        child: const Text('Start'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedIndex = 0;
+                          });
+                        },
+                      ),
+                    ),
+                    TableCell(
+                      child: OutlinedButton(
+                        child: const Text('Stop'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedIndex = 1;
+                          });
+                        },
+                      ),
+                    ),
+                  ]),
+                ],
+              )),
+          _widgetOptions[_selectedIndex],
           GetData(),
         ]
       )
